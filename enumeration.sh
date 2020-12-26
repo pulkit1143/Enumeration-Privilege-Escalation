@@ -9,34 +9,7 @@
 
 
 
-#help function
-usage () 
-{ 
-echo -e "\n\e[00;31m=========================================================\e[00m" 
-echo -e "\e[00;31m#\e[00m" "\e[00;33mLocal Linux Enumeration & Privilege Escalation Script\e[00m" "\e[00;31m#\e[00m"
-echo -e "\e[00;31m===========================================================\e[00m"
-echo -e "\e[00;33m# Example: ./LinEnum.sh -k keyword -r report -e /tmp/ -t \e[00m\n"
 
-		echo "OPTIONS:"
-		echo "-k	Enter keyword"
-		echo "-e	Enter export location"
-		echo "-s 	Supply user password for sudo checks (INSECURE)"
-		echo "-t	Include thorough (lengthy) tests"
-		echo "-r	Enter report name" 
-		echo "-h	Displays this help text"
-		echo -e "\n"
-		echo "Running with no options = limited scans/no output file"
-		
-echo -e "\e[00;31m#########################################################\e[00m"		
-}
-header()
-{
-echo -e "\n\e[00;31m=======================================================\e[00m" 
-echo -e "\e[00;31m#\e[00m" "\e[00;33mLocal Linux Enumeration & Privilege Escalation Script\e[00m" "\e[00;31m#\e[00m" 
-echo -e "\e[00;31m=========================================================\e[00m" 
-
-
-}
 
 CURRENT_USER=$(whoami)
 echo -e "\n\e[00;31m=======================================================\e[00m" 
@@ -91,7 +64,7 @@ echo -e "\e[00;33mScan started at:"; date
 echo -e "\e[00m\n" 
 }
 
-# useful binaries (thanks to https://gtfobins.github.io/)
+
 binarylist='aria2c\|arp\|ash\|awk\|base64\|bash\|busybox\|cat\|chmod\|chown\|cp\|csh\|curl\|cut\|dash\|date\|dd\|diff\|dmsetup\|docker\|ed\|emacs\|env\|expand\|expect\|file\|find\|flock\|fmt\|fold\|ftp\|gawk\|gdb\|gimp\|git\|grep\|head\|ht\|iftop\|ionice\|ip$\|irb\|jjs\|jq\|jrunscript\|ksh\|ld.so\|ldconfig\|less\|logsave\|lua\|make\|man\|mawk\|more\|mv\|mysql\|nano\|nawk\|nc\|netcat\|nice\|nl\|nmap\|node\|od\|openssl\|perl\|pg\|php\|pic\|pico\|python\|readelf\|rlwrap\|rpm\|rpmquery\|rsync\|ruby\|run-parts\|rvim\|scp\|script\|sed\|setarch\|sftp\|sh\|shuf\|socat\|sort\|sqlite3\|ssh$\|start-stop-daemon\|stdbuf\|strace\|systemctl\|tail\|tar\|taskset\|tclsh\|tee\|telnet\|tftp\|time\|timeout\|ul\|unexpand\|uniq\|unshare\|vi\|vim\|watch\|wget\|wish\|xargs\|xxd\|zip\|zsh'
 
 system_info()
@@ -166,7 +139,7 @@ if [[ ! -z $adm_users ]];
     echo -e "\n"
 fi
 
-#checks to see if any hashes are stored in /etc/passwd (depreciated  *nix storage method)
+#checks to see if any hashes are stored in /etc/passwd 
 hashesinpasswd=`grep -v '^[^:]*:[x]' /etc/passwd 2>/dev/null`
 if [ "$hashesinpasswd" ]; then
   echo -e "\e[00;33m[+] It looks like we have password hashes in /etc/passwd!\e[00m\n$hashesinpasswd" 
