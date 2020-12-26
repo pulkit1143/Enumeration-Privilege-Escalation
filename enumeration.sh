@@ -1307,7 +1307,6 @@ echo -e "\e[00;33m### Done ####################################\e[00m"
 
 call_each()
 {
-  header
   debug_info
   system_info
   user_info
